@@ -1,21 +1,17 @@
 const {input} = require('./input');
 
 const partOne = (slope = {right: 3, down: 1}) => {
+    const {right, down} = slope;
     let trees = 0;
     let position = 0;
 
     const lines = input.split('\n');
     
-    for (let i = 1; i < lines.length; i++) { // line at index 0 skipped
+    for (let i = down; i < lines.length; i += down) { // move down and skip lines
         const line = lines[i].trim();
-
-        // nothing to see here, move down by skipping lines  
-        if (slope.down === 2 && (i % 2 === 1)) {           
-            continue;
-        }
         
         // circular move to the right
-        const toRight = position + slope.right;
+        const toRight = position + right;
         position = (toRight < line.length) ? toRight : toRight - line.length;
 
         // on position, ready to check - do I sit on a tree?
