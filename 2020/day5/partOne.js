@@ -35,7 +35,7 @@ const getSeatID = (directions) => {
         }
     }
 
-    const seatID = Math.floor((row * 8) + column);
+    const seatID = (row * 8) + column;
     ALL_SEATS.add(seatID);
 
     return seatID;
